@@ -1,0 +1,103 @@
+{
+    "ready_to_start": "Ready to start?",
+    "selectionnez_une_option_ci_dessous_pour_commencer": "Select an option below to start",
+    "fonctionnaire": "Civil servant",
+    "bienvenue": "Welcome!",
+    "identifiants_invalides": "Invalid credentials. Please try again.",
+    "bienvenue_dans_l_espace_fonctionnaire": "Welcome to the Civil Servant space",
+    "contactAdministrator": "Contact the administrator to obtain your credentials.",
+    "connectez_vous_maintenant": "Log in now",
+    "espace_enseignants": "Teachers Space",
+    "email": "E-mail",
+    "veuillez_fournir_une_adresse_email": "Please provide an email address",
+    "mot_de_passe": "Password",
+    "ajoutee": "Add",
+    "veuillez_fournir_un_mot_de_passe": "Please provide a password",
+    "le_mot_de_passe_doit_comporter_au_moins_4_caracteres": "Password must be at least 4 characters long",
+    "connexion": "Log In",
+    "bienvenue_dans_l_espace_enseignant": "Welcome to the Teachers Space",
+    "total_enseignants": "Total Teachers",
+    "prenom": "First Name",
+     "no_teacher": "No teacher",
+      "no_students": "No students",
+     "select_gender": "Please select a gender",
+     "date_of_birth": "Date of Birth",
+     "gender": "Gender",
+     "veuillez_fournir_un_nom":"Please provide a name",
+     "add_student_prompt": "Please add a student",
+     "veuillez_fournir_un_prenom": "Please provide a first name",
+     "add_teacher_prompt": "Please add a teacher",
+      "national_card": "National ID card",
+      "teacher_list": "List of teachers",
+      "email_prompt": "Please provide an email address",
+      "email_invalid": "Please provide a valid email address",
+      "veuillez_fournir_un_cin":"Please provide a National ID card",
+      "national_card_of": "National ID card: {national_card}",
+    "realisation_par": "Created by Abderrahmane Chaoui\nOmar Chouhani",
+    "fill_all_fields": "Please fill in all fields",
+    "cancel": "Cancel",
+     "delete_teacher": "Delete teacher",
+     "confirm_delete_teacher": "Are you sure you want to delete this teacher?",
+      "id_card_error": "National ID card must start with a character",
+      "student_space": "Student Space",
+    "enseignant": "Teacher",
+     "module_management_space": "Module and Element Management Space",
+     "profile_space": "Profile Space",
+    "no_major": "No major",
+    "add_major_prompt": "Please add a major",
+    "add_major": "Add a major",
+     "major_space": "Major Space",
+    "major_name": "Name of the major",
+     "student_list": "List of Students",
+    "delete": "Delete",
+    "logout": "Logout",
+    "home": "Home",
+    "@national_card_of": {
+    "placeholders": {
+      "national_card": {
+        "type": "String"
+      }
+    }
+  },
+  "massar": "Massar",
+    "massar_of": "Massar: {massar}",
+    "@massar_of": {
+    "placeholders": {
+      "massar": {
+        "type": "String"
+      }
+    }
+  },
+  "major": "Major",
+    "major_of": "Major: {major}",
+    "@major_of": {
+    "placeholders": {
+      "major": {
+        "type": "String"
+      }
+    }
+  },
+  "@semester_of": {
+    "placeholders": {
+      "semester": {
+        "type": "String"
+      }
+    }
+  },
+  "@school_year_of": {
+    "placeholders": {
+      "school_year": {
+        "type": "String"
+      }
+    }
+  },
+  "school_year_of": "School Year : {school_year}",
+  "semester_of": "Semester : {semester}",
+  "major_name_prompt": "Please provide the name of the major",
+    "select_semester": "Select the semester",
+    "select_school_year": "Select the school year",
+    "select_school_year_prompt": "Please select a school year",
+    "school_year": "School Year",
+    "semester": "Semester",
+    "select_semester_prompt": "Please select a semester"
+}
