@@ -1,0 +1,2 @@
+C:/Users/mr/Desktop/estm-app/attendance_appschool/android/app/.cxx/Debug/73145434/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/mr/Desktop/estm-app/attendance_appschool/android/app/.cxx/Debug/73145434/armeabi-v7a/CMakeFiles/rebuild_cache.dir

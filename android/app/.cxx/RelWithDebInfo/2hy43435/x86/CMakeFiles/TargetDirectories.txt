@@ -1,0 +1,2 @@
+C:/Users/mr/Desktop/estm-app/attendance_appschool/android/app/.cxx/RelWithDebInfo/2hy43435/x86/CMakeFiles/edit_cache.dir
+C:/Users/mr/Desktop/estm-app/attendance_appschool/android/app/.cxx/RelWithDebInfo/2hy43435/x86/CMakeFiles/rebuild_cache.dir

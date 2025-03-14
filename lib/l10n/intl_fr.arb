@@ -1,0 +1,104 @@
+{
+    "ready_to_start": "Prêt à débuter ?",
+    "enseignant": "Enseignant",
+    "fonctionnaire": "Fonctionnaire",
+    "bienvenue": "Bienvenue !",
+    "identifiants_invalides": "Identifiants invalides. Veuillez réessayer.",
+    "bienvenue_dans_l_espace_fonctionnaire": "Bienvenue dans l espace Fonctionnaire",
+  "connectez_vous_maintenant": "Connectez-vous maintenant",
+  "bienvenue_dans_l_espace_enseignant": "Bienvenue dans l espace Enseignant",
+  "contactAdministrator": "Contactez l administrateur pour obtenir vos identifiants.",
+  "email": "E-mail",
+  "veuillez_fournir_une_adresse_email": "Veuillez fournir une adresse e-mail",
+  "espace_enseignants": "Espace Enseignants",
+  "ajoutee": "Ajouter",
+  "mot_de_passe": "Mot de passe",
+   "teacher_list": "La liste des enseignantes",
+  "veuillez_fournir_un_mot_de_passe": "Veuillez fournir un mot de passe",
+  "le_mot_de_passe_doit_comporter_au_moins_4_caracteres": "Le mot de passe doit comporter au moins 4 caractères",
+  "connexion": "Connexion",
+  "prenom": "Prénom",
+    "realisation_par": "Réalisation par Abderrahmane Chaoui\nOmar Chouhani",
+    "total_enseignants": "Total des enseignants",
+    "add_major": "Ajouter une filière",
+    "major_name": "Nom de la filière",
+    "no_teacher": "Aucun enseignant",
+    "no_major": "Aucun filière",
+    "add_major_prompt": "Veuillez ajouter une filière",
+    
+    "no_students": "Aucun étudiant",
+     "national_card": "Carte nationale d identité",
+     "national_card_of": "Carte nationale d identité : {national_card}",
+    "add_teacher_prompt": "Veuillez ajouter un enseignant",
+    "veuillez_fournir_un_nom":"Veuillez fournir un nom",
+    "veuillez_fournir_un_prenom": "Veuillez fournir un prénom",
+    "veuillez_fournir_un_cin":"Veuillez fournir la carte nationale d''identité",
+    "email_prompt": "Veuillez fournir une adresse e-mail",
+    "email_invalid": "Veuillez fournir une adresse e-mail valide",
+    "select_gender": "Veuillez sélectionner un sexe",
+    "gender": "Genre",
+    "date_of_birth": "Date de naissance",
+    "add_student_prompt": "Veuillez ajouter un étudiant",
+    "cancel": "Annuler",
+    "fill_all_fields": "Veuillez remplir tous les champs",
+    "delete_teacher": "Supprimer l enseignant",
+    "delete": "Supprimer",
+    "student_list": "La liste des Étudiants",
+    "student_space": "Espace Étudiants",
+    "major_space": "Espace Filières",
+    "profile_space": "Espace Profil",
+    "home": "Accueil",
+    "logout": "Déconnexion",
+    "module_management_space": "Espace de Gestion des Modules et des Éléments",
+    "id_card_error": "La carte nationale d identité doit commencer par un caractère",
+    "confirm_delete_teacher": "Êtes-vous sûr de vouloir supprimer cet enseignant ?",
+    "selectionnez_une_option_ci_dessous_pour_commencer": "Sélectionnez une option ci-dessous pour commencer",
+    "major": "Filière",
+    "major_of": "Filière: {major}",
+    "@major_of": {
+    "placeholders": {
+      "major": {
+        "type": "String"
+      }
+    }
+  },
+  "massar": "Massar",
+    "massar_of": "Massar: {massar}",
+    "@massar_of": {
+    "placeholders": {
+      "massar": {
+        "type": "String"
+      }
+    }
+  },
+    "@national_card_of": {
+    "placeholders": {
+      "national_card": {
+        "type": "String"
+      }
+    }
+  },
+  "@semester_of": {
+    "placeholders": {
+      "semester": {
+        "type": "String"
+      }
+    }
+  },
+  "@school_year_of": {
+    "placeholders": {
+      "school_year": {
+        "type": "String"
+      }
+    }
+  },
+  "school_year_of": "Année scolaire : {school_year}",
+  "semester_of": "Semestre : {semester}",
+  "major_name_prompt": "Veuillez fournir un nom de la filière",
+    "select_semester": "Sélectionner le semestre",
+    "select_school_year": "Sélectionner l''année scolaire",
+    "select_school_year_prompt": "Veuillez sélectionner une année scolaire",
+    "school_year": "Année scolaire",
+    "semester": "Semestre",
+    "select_semester_prompt": "Veuillez sélectionner un semestre"
+}

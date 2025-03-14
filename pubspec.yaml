@@ -1,0 +1,43 @@
+name: attendance_appschool
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  sqflite_common_ffi: ^2.3.5
+  sqflite: ^2.4.2
+  file_picker: ^9.0.2
+  excel: ^4.0.6
+  intl: ^0.19.0
+  fluttertoast: ^8.2.12
+  flutter_local_notifications: ^18.0.1
+  mobile_scanner: ^6.0.7
+  animate_do: ^4.2.0
+  provider: ^6.1.2
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.17
+  shared_preferences: ^2.5.2
+  mailer: ^6.4.1
+  win32: ^5.6.0
+  archive: ^3.6.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+flutter_intl:
+  enabled: true

@@ -1,0 +1,105 @@
+{
+    "ready_to_start": "جاهز للبدء؟",
+    "enseignant": "معلم",
+    "realisation_par": "تم الإنشاء بواسطة عبدالرحمن شاوي\nعمر شوهاني",
+    "fonctionnaire": "موظف حكومي",
+    "bienvenue": "أهلا وسهلا!",
+    "identifiants_invalides": "بيانات اعتماد غير صالحة. حاول مرة اخرى.",
+    "bienvenue_dans_l_espace_fonctionnaire": "مرحبًا في مساحة الموظفين",
+  "connectez_vous_maintenant": "سجل الآن",
+  "espace_enseignants": "مساحة المعلمين",
+  "ajoutee": "إضافة",
+  
+  "bienvenue_dans_l_espace_enseignant": "مرحبًا بك في مساحة المعلم",
+  "contactAdministrator": "اتصل بالمسؤول للحصول على بيانات الاعتماد الخاصة بك.",
+  "email": "البريد الإلكتروني",
+  "veuillez_fournir_une_adresse_email": "يرجى تقديم عنوان بريد إلكتروني",
+  "mot_de_passe": "كلمة المرور",
+  "veuillez_fournir_un_mot_de_passe": "الرجاء تقديم كلمة مرور",
+  "le_mot_de_passe_doit_comporter_au_moins_4_caracteres": "يجب أن تتكون كلمة المرور من 4 أحرف على الأقل",
+  "connexion": "تسجيل الدخول",
+  "teacher_list": "قائمة المعلمين",
+  "major_space": "مساحة التخصص",
+  "module_management_space": "مساحة إدارة الوحدات والعناصر",
+  "profile_space": "مساحة الملف الشخصي",
+  "date_of_birth": "تاريخ الميلاد",
+  "logout": "تسجيل الخروج",
+  "home": "الصفحة الرئيسية",
+  "no_teacher": "لا يوجد معلم",
+   "no_students": "لا يوجد طلاب",
+  "add_teacher_prompt": "يرجى إضافة معلم",
+  "gender": "الجنس",
+  "select_gender": "يرجى اختيار الجنس",
+  "prenom": "الاسم الأول",
+  "veuillez_fournir_un_prenom": "يرجى تقديم الاسم الأول",
+  "add_student_prompt": "يرجى إضافة طالب",
+  "national_card": "البطاقة الوطنية",
+  "veuillez_fournir_un_nom":"يرجى تقديم اسم",
+  "email_prompt": "يرجى تقديم عنوان بريد إلكتروني",
+  "national_card_of": "البطاقة الوطنية: {national_card}",
+  "email_invalid": "يرجى تقديم عنوان بريد إلكتروني صحيح",
+  "total_enseignants": "إجمالي المعلمين",
+  "veuillez_fournir_un_cin":"يرجى تقديم بطاقة هوية وطنية",
+    "selectionnez_une_option_ci_dessous_pour_commencer": "اختر خيارًا أدناه للبدء",
+    "fill_all_fields": "يرجى ملء جميع الحقول",
+    "delete_teacher": "حذف المعلم",
+    "confirm_delete_teacher": "هل أنت متأكد أنك تريد حذف هذا المعلم؟",
+    "delete": "حذف",
+    "id_card_error": "يجب أن تبدأ بطاقة الهوية الوطنية بحرف",
+    "student_space": "المساحة الطلابية",
+    "student_list": "قائمة الطلاب",
+    "add_major_prompt": "يرجى إضافة تخصص",
+    "no_major": "لا يوجد تخصص",
+    "add_major": "إضافة تخصص",
+     "major_name": "اسم التخصص",
+     
+    "cancel": "إلغاء",
+    "@national_card_of": {
+    "placeholders": {
+      "national_card": {
+        "type": "String"
+      }
+    }
+  },
+  "massar": "ماسار",
+    "massar_of": "ماسار: {massar}",
+    "@massar_of": {
+    "placeholders": {
+      "massar": {
+        "type": "String"
+      }
+    }
+  },
+  "major": "تخصص",
+    "major_of": "تخصص: {major}",
+    "@major_of": {
+    "placeholders": {
+      "major": {
+        "type": "String"
+      }
+    }
+  },
+  "@semester_of": {
+    "placeholders": {
+      "semester": {
+        "type": "String"
+      }
+    }
+  },
+  "@school_year_of": {
+    "placeholders": {
+      "school_year": {
+        "type": "String"
+      }
+    }
+  },
+  "school_year_of": "العام الدراسي : {school_year}",
+  "semester_of": "فصل دراسي : {semester}",
+  "major_name_prompt": "يرجى تقديم اسم التخصص",
+    "select_semester": "اختر الفصل الدراسي",
+    "select_school_year": "اختر العام الدراسي",
+    "select_school_year_prompt": "يرجى اختيار العام الدراسي",
+    "school_year": "العام الدراسي",
+    "semester": "فصل دراسي",
+    "select_semester_prompt": "يرجى اختيار الفصل الدراسي"
+}
