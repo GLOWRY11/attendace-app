@@ -40,7 +40,7 @@ class _FonctionnerDetailsState extends State<FonctionnerDetails> {
       backgroundColor: TColors.white,
       appBar: AppBar(
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         backgroundColor: Colors.transparent,

@@ -47,7 +47,7 @@ import '../../../../provider/AuthenticationProvider.dart';
                 appBar: AppBar(
                   centerTitle: true,
                   title: SvgPicture.asset(
-                    'assets/logoestk_digital.svg',
+                    'assets/logoestm_digital.svg',
                     height: 50,
                   ),
                   backgroundColor: TColors.white,
@@ -108,15 +108,12 @@ import '../../../../provider/AuthenticationProvider.dart';
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              SizedBox(
-                                                width: MediaQuery.of(context).size.width /2,
-                                                child: Image.asset(
-                                                  'assets/Hidden mining-rafiki.png', // Replace 'your_image.png' with the path to your image asset
-                                                  fit: BoxFit.contain, // You can adjust the fit property as needed
-                                                  // Adjust width and height as needed
-                                                ),
+                                              const Icon(
+                                                Icons.history_toggle_off,
+                                                size: 100,
+                                                color: Colors.grey,
                                               ),
-                                              const SizedBox(width: 10),
+                                              const SizedBox(height: 20),
                                               const Text(
                                                 'Aucun enregistrement de présence disponible',
                                                 textAlign: TextAlign.center,

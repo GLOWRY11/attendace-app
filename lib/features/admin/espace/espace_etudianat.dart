@@ -123,7 +123,7 @@ class _EspaceEtudianteState extends State<EspaceEtudiante> {
         backgroundColor: TColors.white,
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
       ),

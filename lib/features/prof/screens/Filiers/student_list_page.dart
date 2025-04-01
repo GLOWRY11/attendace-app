@@ -102,7 +102,7 @@ class _StudentListPageState extends State<StudentListPageProf> {
         ),
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
       ),
@@ -283,13 +283,12 @@ class _StudentListPageState extends State<StudentListPageProf> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.asset(
-                                  'assets/Search-rafiki 1.png', // Replace 'your_image.png' with the path to your image asset
-                                  width: MediaQuery.of(context).size.width / 3,
-                                  fit: BoxFit.fill,
-                                  // Adjust width and height as needed
+                                const Icon(
+                                  Icons.search_off,
+                                  size: 100,
+                                  color: Colors.grey,
                                 ),
-                                const SizedBox(width: 10),
+                                const SizedBox(height: 20),
                                 const Text(
                                   "Aucun étudiant",
                                   textAlign: TextAlign.center,

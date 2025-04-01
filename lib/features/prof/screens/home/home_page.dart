@@ -84,7 +84,7 @@ class _ClassScreenState extends State<HomePageScreenProf> {
       appBar: AppBar(
 
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         actions: [

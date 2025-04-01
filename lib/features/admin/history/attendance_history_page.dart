@@ -50,7 +50,7 @@
                     centerTitle: true,
                     backgroundColor: TColors.white,
                     title: SvgPicture.asset(
-                      'assets/logoestk_digital.svg',
+                      'assets/logoestm_digital.svg',
                       height: 50,
                     ),
                     leading:IconButton(

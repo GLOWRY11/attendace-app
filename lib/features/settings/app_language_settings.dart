@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +32,7 @@ class _AppLanguageSettingsState extends State<AppLanguageSettings> {
       appBar: AppBar(
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         backgroundColor: TColors.white,

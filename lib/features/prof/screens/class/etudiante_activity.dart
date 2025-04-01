@@ -146,7 +146,7 @@ class _EtudianteActivityState extends State<EtudianteActivity> {
           ),
         ),
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         backgroundColor: TColors.white,

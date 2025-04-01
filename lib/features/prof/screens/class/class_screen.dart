@@ -209,7 +209,7 @@ for (var classMap in seances ?? []) {
 
           backgroundColor: Colors.transparent,
           title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
 

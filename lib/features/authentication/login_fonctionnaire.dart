@@ -20,6 +20,82 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _passwordVisible = false;
+  late DBHelper _dbHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    _dbHelper = Provider.of<DBHelper>(context, listen: false);
+    // Initialisation des données dans la base de données
+    final dbHelper = Provider.of<DBHelper>(context, listen: false);
+    dbHelper
+        .addFonctionnaire(
+          nom: 'Martin',
+          prenom: 'Dubois',
+          cin: "v209013",
+          email: 'martin.dubois@estm.edu',
+          date: '1990-01-01',
+          sexe: 'Male',
+          phoneNumber: '1234567890',
+          motDePasse: 'password123',
+        )
+        .then((fonctionnaireId) {
+      print('Inserted fonctionnaire with ID: $fonctionnaireId');
+    }).catchError((error) {
+      print('Failed to insert fonctionnaire: $error');
+    });
+
+    dbHelper
+        .addEtudiant(
+          'Sophie',
+          'Bernard',
+          1,
+          "v209013",
+          'Female',
+          'sophie.bernard@estm.edu',
+          '1234567890',
+          '1990-01-01',
+        )
+        .then((etudiantId) {
+      print('Inserted etudiant with ID: $etudiantId');
+    }).catchError((error) {
+      print('Failed to insert etudiant: $error');
+    });
+
+    addEnseignant();
+  }
+
+  Future<void> addEnseignant() async {
+    final dbHelper = Provider.of<DBHelper>(context, listen: false);
+    await dbHelper.addEnseignant(
+      'Pierre Martin',
+      'P987654',
+      'Homme',
+      'Pierre',
+      'pierre.martin@estm.edu',
+      '0611111111',
+      '1988-03-20',
+      'password789'
+    );
+
+    await dbHelper.addEnseignant(
+      'Sophie Bernard',
+      'S456789',
+      'Femme',
+      'Sophie',
+      'sophie.bernard@estm.edu',
+      '0622222222',
+      '1992-08-10',
+      'password101'
+    );
+
+    // Identifiants de connexion pour les enseignants :
+    // Email: pierre.martin@estm.edu
+    // Mot de passe: password789
+    // 
+    // Email: sophie.bernard@estm.edu
+    // Mot de passe: password101
+  }
 
   @override
   void dispose() {
@@ -28,31 +104,52 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
     super.dispose();
   }
 
-  _submitForm() async {
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
       final email = _emailController.text;
       final password = _passwordController.text;
-      final authProvider =
-          Provider.of<AuthenticationProvider>(context, listen: false);
-      final isAuthenticated =
-          await authProvider.authenticateFonctionnaire(email, password);
-      if (isAuthenticated) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const NavigationMenuAdmin()),
-        );
+
+      try {
+        print('Tentative de connexion avec:');
+        print('Email: $email');
+        print('Mot de passe: $password');
+
+        await _dbHelper.printAllFonctionnaires();
+        
+        final exists = await _dbHelper.fonctionnaireExists(email);
+        if (!exists) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Ce fonctionnaire n\'existe pas dans la base de données')),
+          );
+          return;
+        }
+
+        await _dbHelper.printFonctionnaireDetails(email);
+
+        final authProvider = Provider.of<AuthenticationProvider>(context, listen: false);
+        final isAuthenticated = await authProvider.authenticateFonctionnaire(email, password);
+        if (isAuthenticated) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const NavigationMenuAdmin()),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text(S.of(context).bienvenue),
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(S.of(context).identifiants_invalides),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.green,
-            content: Text(S.of(context).bienvenue),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(S.of(context).identifiants_invalides),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Erreur: $e')),
         );
       }
     }
@@ -60,29 +157,6 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final dbHelper = Provider.of<DBHelper>(context, listen: false);
-    // dbHelper.addFonctionnaire(nom: 'John',
-    //   prenom: 'Doe',
-    //   cin:"v209013-",
-    //   email: 'john.doe@example.com',
-    //   date: '1990-01-01',
-    //   sexe: 'Male',
-    //   phoneNumber: '1234567890',
-    //   motDePasse: 'password1234',
-    // mohamedouhda@gmail.com 5#gX]hL6yL8$
-    // ).then((fonctionnaireId) {
-    //   print('Inserted fonctionnaire with ID: $fonctionnaireId');
-    // }).catchError((error) {
-    //   // Handle error
-    //   print('Failed to insert fonctionnaire: $error');
-    // });
-    dbHelper.addEtudiant('John', 'Doe',1,"v209013", 'Male','john.doe@example.com','1234567890', '1990-01-01',
-    ).then((fonctionnaireId) {
-      print('Inserted tudiant with ID: $fonctionnaireId');
-    }).catchError((error) {
-      // Handle error
-      print('Failed to insert tudiant: $error');
-    });
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -114,7 +188,7 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
                         duration: const Duration(milliseconds: 1100),
                         child: Center(
                           child: Image.asset(
-                            "assets/logo3.png",
+                            "assets/images/logo3.png",
                             height: MediaQuery.of(context).size.height * 0.28,
                           ),
                         ),
@@ -168,7 +242,8 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(9),
-                              borderSide: const BorderSide(color: TColors.firstcolor),
+                              borderSide:
+                                  const BorderSide(color: TColors.firstcolor),
                             ),
                             labelStyle: const TextStyle(
                               fontWeight: FontWeight.normal,
@@ -205,7 +280,8 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(9),
-                              borderSide: const BorderSide(color: TColors.firstcolor),
+                              borderSide:
+                                  const BorderSide(color: TColors.firstcolor),
                             ),
                             labelStyle: const TextStyle(
                               fontWeight: FontWeight.normal,
@@ -284,10 +360,13 @@ class _AuthScreenState extends State<LoginFonctionnaireScreen> {
                       FadeInUp(
                         duration: const Duration(milliseconds: 1900),
                         child: Center(
-                          child: Image.asset(
-                            "assets/estkdigital.png",
-                            height: 70,
-                            fit: BoxFit.contain,
+                          child: Text(
+                            "ESTM Digital",
+                            style: TextStyle(
+                              color: TColors.firstcolor,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

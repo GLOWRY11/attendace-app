@@ -91,7 +91,7 @@ class _AttendanceDetailsPageState extends State<AttendanceDetailsEnseignantPage>
         backgroundColor: TColors.white,
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         leading: IconButton(

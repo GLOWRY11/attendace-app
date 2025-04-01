@@ -25,55 +25,61 @@ class _AttendanceDetailsPageState extends State<AttendanceDetailsFilierPage> {
   @override
   void initState() {
     super.initState();
+    debugPrint('Initializing AttendanceDetailsFilierPage with ID: ${widget.attendanceHistoryId}');
     dbHelper = DBHelper();
-    loadData();
+    _loadAttendanceDetails();
   }
 
-  void loadData() async {
-    List<Map<String, dynamic>>? records =
-    await dbHelper.getAbsenceRecords(widget.attendanceHistoryId);
-    List<AbsenceItem> loadedAbsenceItems = [];
-    for (var record in records) {
-      if (record.containsKey(DBHelper.ABSENCE_ID) &&
-          record.containsKey(DBHelper.ETUDIANT_ID) &&
-          record.containsKey(DBHelper.IS_PRESENT) &&
-          record.containsKey(DBHelper.ABSENCE_DATE) &&
-          record.containsKey(DBHelper.START_TIME) &&
-          record.containsKey(DBHelper.END_TIME)) {
-        int absenceId = record[DBHelper.ABSENCE_ID] as int;
-        int studentId = record[DBHelper.ETUDIANT_ID] as int;
-        bool isPresent = (record[DBHelper.IS_PRESENT] as int) == 1;
-        DateTime date = DateTime.parse(record[DBHelper.ABSENCE_DATE] as String);
-        String startTime = record[DBHelper.START_TIME] as String;
-        String endTime = record[DBHelper.END_TIME] as String;
-        loadedAbsenceItems.add(AbsenceItem(
-          id: absenceId,
-          studentId: studentId,
-          isPresent: isPresent,
-          date: date,
-          startTime: startTime,
-          endTime: endTime,
-        ));
+  Future<void> _loadAttendanceDetails() async {
+    try {
+      debugPrint('Loading attendance details for ID: ${widget.attendanceHistoryId}');
+      List<Map<String, dynamic>>? records =
+      await dbHelper.getAbsenceRecords(widget.attendanceHistoryId);
+      List<AbsenceItem> loadedAbsenceItems = [];
+      for (var record in records) {
+        if (record.containsKey(DBHelper.ABSENCE_ID) &&
+            record.containsKey(DBHelper.ETUDIANT_ID) &&
+            record.containsKey(DBHelper.IS_PRESENT) &&
+            record.containsKey(DBHelper.ABSENCE_DATE) &&
+            record.containsKey(DBHelper.START_TIME) &&
+            record.containsKey(DBHelper.END_TIME)) {
+          int absenceId = record[DBHelper.ABSENCE_ID] as int;
+          int studentId = record[DBHelper.ETUDIANT_ID] as int;
+          bool isPresent = (record[DBHelper.IS_PRESENT] as int) == 1;
+          DateTime date = DateTime.parse(record[DBHelper.ABSENCE_DATE] as String);
+          String startTime = record[DBHelper.START_TIME] as String;
+          String endTime = record[DBHelper.END_TIME] as String;
+          loadedAbsenceItems.add(AbsenceItem(
+            id: absenceId,
+            studentId: studentId,
+            isPresent: isPresent,
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+          ));
 
-        // Fetch étudiant details and store them
-        try {
-          Map<String, String> details =
-          await dbHelper.getEtudianteDetailsById(studentId);
-          etudiantDetails[studentId] = details;
-        } catch (e) {
-          print('Error fetching étudiant details: $e');
-          etudiantDetails[studentId] = {
-            'nom': 'Unknown',
-            'prenom': '',
-          };
+          // Fetch étudiant details and store them
+          try {
+            Map<String, String> details =
+            await dbHelper.getEtudianteDetailsById(studentId);
+            etudiantDetails[studentId] = details;
+          } catch (e) {
+            debugPrint('Error fetching étudiant details: $e');
+            etudiantDetails[studentId] = {
+              'nom': 'Unknown',
+              'prenom': '',
+            };
+          }
+        } else {
+          debugPrint('Invalid record: $record');
         }
-      } else {
-        print('Invalid record: $record');
       }
+      setState(() {
+        absenceItems = loadedAbsenceItems;
+      });
+    } catch (e) {
+      debugPrint('Error loading attendance details: $e');
     }
-    setState(() {
-      absenceItems = loadedAbsenceItems;
-    });
   }
 
 
@@ -92,8 +98,8 @@ class _AttendanceDetailsPageState extends State<AttendanceDetailsFilierPage> {
     String filePath = '$dir/Test_Export.xlsx';
 
     exel.save(fileName: filePath);
-    print("Excel file saved to: $filePath");
-    print(Directory.current.path);
+    debugPrint("Excel file saved to: $filePath");
+    debugPrint(Directory.current.path);
   }
 
 
@@ -105,7 +111,7 @@ class _AttendanceDetailsPageState extends State<AttendanceDetailsFilierPage> {
       appBar: AppBar(
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         backgroundColor: TColors.white,

@@ -33,10 +33,9 @@ class MyApp extends StatelessWidget {
     final localizationProvider = Provider.of<LocalizationProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // locale: const Locale('fr'),
       locale: localizationProvider.currentLocale,
       title: 'ESTK-DIGITAL',
-        home: const  ChosePageLogin(),
+      home: const ChosePageLogin(),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

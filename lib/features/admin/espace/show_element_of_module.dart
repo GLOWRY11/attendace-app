@@ -58,7 +58,7 @@ class _ShowElementOfModuleState extends State<ShowElementOfModule> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         leading:IconButton(

@@ -31,7 +31,7 @@ class _AbsenceChosePageState extends State<AbsenceChosePage> {
         backgroundColor: TColors.white,
         centerTitle: true,
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         leading:IconButton(

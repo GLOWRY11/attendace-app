@@ -5,6 +5,7 @@ import 'package:attendance_appschool/util/constant/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:provider/provider.dart';
+import 'package:attendance_appschool/data/sqflite/DBHelper.dart';
 
 class LoginEnsignScreen extends StatefulWidget {
   const LoginEnsignScreen({super.key});
@@ -17,7 +18,60 @@ class _AuthScreenState extends State<LoginEnsignScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _passwordVisible = false; // Add this line
+  bool _passwordVisible = false;
+  late DBHelper _dbHelper;
+  late AuthenticationProvider _authProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    _dbHelper = Provider.of<DBHelper>(context, listen: false);
+    _authProvider = Provider.of<AuthenticationProvider>(context, listen: false);
+    
+    // Initialize test teachers
+    _initializeTeachers();
+  }
+
+  Future<void> _initializeTeachers() async {
+    try {
+      // Check if teachers already exist
+      final exists1 = await _dbHelper.enseignantExists('pierre.martin@estm.edu');
+      final exists2 = await _dbHelper.enseignantExists('sophie.bernard@estm.edu');
+
+      if (!exists1) {
+        await _dbHelper.addEnseignant(
+          'Martin',
+          'Pierre',
+          'P987654',
+          'pierre.martin@estm.edu',
+          'password789',
+          'Homme',
+          '0611111111',
+          '1988-03-20'
+        );
+        print('Teacher 1 added successfully');
+      }
+
+      if (!exists2) {
+        await _dbHelper.addEnseignant(
+          'Bernard',
+          'Sophie',
+          'S456789',
+          'sophie.bernard@estm.edu',
+          'password101',
+          'Femme',
+          '0622222222',
+          '1992-08-10'
+        );
+        print('Teacher 2 added successfully');
+      }
+
+      // Print all teachers for debugging
+      await _dbHelper.printAllEnseignants();
+    } catch (e) {
+      print('Error initializing teachers: $e');
+    }
+  }
 
   @override
   void dispose() {
@@ -26,31 +80,45 @@ class _AuthScreenState extends State<LoginEnsignScreen> {
     super.dispose();
   }
 
-  _submitForm() async {
+  Future<void> _login() async {
     if (_formKey.currentState!.validate()) {
       final email = _emailController.text;
       final password = _passwordController.text;
-      final authProvider =
-          Provider.of<AuthenticationProvider>(context, listen: false);
-      final isAuthenticated =
-          await authProvider.authenticateEnseignant(email, password);
-      if (isAuthenticated) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const NavigationMenuProf()),
-        );
+
+      try {
+        print('Tentative de connexion avec:');
+        print('Email: $email');
+        print('Mot de passe: $password');
+        
+        await _dbHelper.printAllEnseignants();
+        
+        final exists = await _dbHelper.enseignantExists(email);
+        if (!exists) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Cet enseignant n\'existe pas dans la base de données')),
+          );
+          return;
+        }
+
+        await _dbHelper.printEnseignantDetails(email);
+
+        final success = await _authProvider.authenticateEnseignant(email, password);
+        if (success) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const NavigationMenuProf()),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Bienvenue ${_authProvider.authenticatedEnseignant?.prenom ?? ""}!')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Identifiants invalides')),
+          );
+        }
+      } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.green,
-            content: Text(S.of(context).bienvenue),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(S.of(context).identifiants_invalides),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Erreur: $e')),
         );
       }
     }
@@ -90,7 +158,7 @@ class _AuthScreenState extends State<LoginEnsignScreen> {
                         duration: const Duration(milliseconds: 1100),
                         child: Center(
                           child: Image.asset(
-                            "assets/logo3.png",
+                            "assets/images/logo3.png",
                             height: MediaQuery.of(context).size.height * 0.28,
                           ),
                         ),
@@ -221,7 +289,7 @@ class _AuthScreenState extends State<LoginEnsignScreen> {
                             ),
                           ),
                           obscureText: !_passwordVisible,
-                          onFieldSubmitted: (_) => _submitForm(),
+                          onFieldSubmitted: (_) => _login(),
                           validator: (val) {
                             if (val!.trim().isEmpty) {
                               return S
@@ -243,7 +311,7 @@ class _AuthScreenState extends State<LoginEnsignScreen> {
                       FadeInUp(
                         duration: const Duration(milliseconds: 1800),
                         child: ElevatedButton(
-                          onPressed: _submitForm,
+                          onPressed: _login,
                           style: ButtonStyle(
                             backgroundColor: WidgetStateProperty.all<Color>(
                                 TColors.firstcolor),
@@ -273,10 +341,13 @@ class _AuthScreenState extends State<LoginEnsignScreen> {
                       FadeInUp(
                         duration: const Duration(milliseconds: 1900),
                         child: Center(
-                          child: Image.asset(
-                            "assets/estkdigital.png",
-                            height: 70,
-                            fit: BoxFit.contain,
+                          child: Text(
+                            "ESTM Digital",
+                            style: TextStyle(
+                              color: TColors.firstcolor,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

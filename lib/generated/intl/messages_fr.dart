@@ -105,7 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ready_to_start":
             MessageLookupByLibrary.simpleMessage("Prêt à débuter ?"),
         "realisation_par": MessageLookupByLibrary.simpleMessage(
-            "Réalisation par Abderrahmane Chaoui\nOmar Chouhani"),
+            "réalisé par achir marouane et laounissi chahid"),
         "school_year": MessageLookupByLibrary.simpleMessage("Année scolaire"),
         "school_year_of": m3,
         "select_gender": MessageLookupByLibrary.simpleMessage(

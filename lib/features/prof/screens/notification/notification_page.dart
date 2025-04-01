@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:attendance_appschool/provider/AuthenticationProvider.dart';
 import 'package:attendance_appschool/provider/notification_provider.dart';
@@ -23,10 +22,10 @@ class _NotificationScreenState extends State<EnseignantNotificationScreen> {
   }
 
   Future<Map<String, String>> getFonctionnaireDetailsById(int Id) async {
-    final fonctionnaire = await dbHelper.getFonctionaireDetailsById(Id); // Assuming dbHelper is accessible
+    final fonctionnaire = await dbHelper.getFonctionaireDetailsById(Id);
     return {
-      'nom': fonctionnaire['nom'] ?? 'Unknown',
-      'prenom': fonctionnaire['prenom'] ?? '',
+      'nom': fonctionnaire[DBHelper.FONCTIONNAIRE_NOM] ?? 'Unknown',
+      'prenom': fonctionnaire[DBHelper.FONCTIONNAIRE_PRENOM] ?? '',
     };
   }
 
@@ -58,9 +57,13 @@ class _NotificationScreenState extends State<EnseignantNotificationScreen> {
         ),
         centerTitle: true,
         backgroundColor: TColors.white,
-        title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
-          height: 50,
+        title: const Text(
+          "ESTM Digital",
+          style: TextStyle(
+            color: TColors.firstcolor,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: FutureBuilder(

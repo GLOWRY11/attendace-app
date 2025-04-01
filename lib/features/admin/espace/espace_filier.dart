@@ -157,7 +157,7 @@ class _Espace_FiliereState extends State<EspaceFiliere> {
           )
         ],
         title: SvgPicture.asset(
-          'assets/logoestk_digital.svg',
+          'assets/logoestm_digital.svg',
           height: 50,
         ),
         leading: Builder(builder: (context) {

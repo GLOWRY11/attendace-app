@@ -202,10 +202,9 @@ class _AddModuleElementPageState extends State<AddModuleElementPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            'assets/File searching-cuate.png', // Replace 'your_image.png' with the path to your image asset
-                            width: MediaQuery.of(context).size.width / 2,
-
-                            // Adjust width and height as needed
+                            'assets/images/File searching-cuate.png',
+                            width: MediaQuery.of(context).size.width / 3,
+                            fit: BoxFit.fill,
                           ),
                           const SizedBox(width: 10),
                           const Text(
@@ -595,10 +594,9 @@ class _AddModuleElementPageState extends State<AddModuleElementPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            'assets/File searching-cuate.png', // Replace 'your_image.png' with the path to your image asset
-                            width: MediaQuery.of(context).size.width / 2,
-
-                            // Adjust width and height as needed
+                            'assets/images/File searching-cuate.png',
+                            width: MediaQuery.of(context).size.width / 3,
+                            fit: BoxFit.fill,
                           ),
                           const SizedBox(width: 10),
                           const Text(
@@ -921,7 +919,7 @@ class _AddModuleElementPageState extends State<AddModuleElementPage> {
         appBar: AppBar(
           centerTitle: true,
           title: SvgPicture.asset(
-            'assets/logoestk_digital.svg',
+            'assets/logoestm_digital.svg',
             height: 50,
           ),
           backgroundColor: TColors.white,

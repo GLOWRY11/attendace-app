@@ -209,10 +209,13 @@ class _AuthScreenState extends State<ChosePageLogin> {
                     FadeInUp(
                       duration: const Duration(milliseconds: 1900),
                       child: Center(
-                        child: Image.asset(
-                          "assets/estkdigital.png",
-                          height: 70,
-                          fit: BoxFit.contain,
+                        child: Text(
+                          "ESTM Digital",
+                          style: TextStyle(
+                            color: TColors.firstcolor,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
